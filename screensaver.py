@@ -33,22 +33,16 @@ ADDON_PATH = addon.getAddonInfo('path')
 
 SQLITE_FILE= xbmc.translatePath(  ADDON_PATH+"/resources/pokedex.sqlite" )
 
-#CACHE_FOLDER=xbmc.translatePath("special://profile/addon_data/"+ADDON_ID+"/cache")
-#CACHE_FILE=xbmc.translatePath("special://profile/addon_data/"+ADDON_ID+"/cache")
+PROFILE_DIR=xbmc.translatePath("special://profile/addon_data/"+ADDON_ID)
+CACHE_FILE=xbmc.translatePath(PROFILE_DIR+"/requests_cache")
 
-#CACHE_FOLDER=xbmc.translatePath(ADDON_PATH+"/resources/pokedex.sqlite")
-CACHE_FILE=xbmc.translatePath("special://profile/addon_data/"+ADDON_ID+"/requests_cache")
-
-PKMON_INDEX_FILE=xbmc.translatePath(  "special://profile/addon_data/"+ADDON_ID+"/pokemon_index.pickle" )
-BGG_INDEX_FILE =xbmc.translatePath(  "special://profile/addon_data/"+ADDON_ID+"/bgg_index.pickle" )
-
-#PKMON_INDEX_FILE=xbmc.translatePath(  ADDON_PATH+"/resources/pokemon_index.pickle" )
-#BGG_INDEX_FILE =xbmc.translatePath(  ADDON_PATH+"/resources/bgg_index.pickle" )
+PKMON_INDEX_FILE=xbmc.translatePath( PROFILE_DIR+"/pokemon_index.pickle" )
+BGG_INDEX_FILE =xbmc.translatePath( PROFILE_DIR+"/bgg_index.pickle" )
 
 facts_queue=Queue(maxsize=4)
 
 
-resources.lib.requests_cache.install_cache(CACHE_FILE, backend='sqlite')
+
 
 
 def start(arg1, arg2):
@@ -78,6 +72,14 @@ def start(arg1, arg2):
 
     work_q = Queue()
     
+    if not os.path.exists(PROFILE_DIR):
+        #on a fresh install, the profile path is not yet created. Kodi will do this for our addon (after a user saves a setting?)
+        #  the user will get an error because we cannot create our cache.sqlite file. 
+        #  we instead create it in memory 
+        resources.lib.requests_cache.install_cache( CACHE_FILE, backend='memory' )  #will create a cache in memory
+        log('using memory for requests_cache file')
+    else:        
+        resources.lib.requests_cache.install_cache(CACHE_FILE, backend='sqlite', expire_after=604800 )  #cache expires after 7 days
 
     try:
         if arg1=='pokemon':
