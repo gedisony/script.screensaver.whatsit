@@ -1,0 +1,344 @@
+# Kodi Media Center language file
+# Addon Name: guessadex
+# Addon id: script.screensaver.guessadex
+msgid ""
+msgstr ""
+
+#settings screen settings.xml
+
+#setting category
+msgctxt "#32100"
+msgid "General"
+msgstr ""
+
+msgctxt "#32101"
+msgid "Clear requests cache"
+msgstr ""
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+msgctxt "#32200"
+msgid "Pokemon"
+msgstr ""
+
+msgctxt "#32201"
+msgid "Generation I"
+msgstr ""
+
+msgctxt "#32202"
+msgid "Generation II"
+msgstr ""
+
+msgctxt "#32203"
+msgid "Generation III"
+msgstr ""
+
+msgctxt "#32204"
+msgid "Generation IV"
+msgstr ""
+
+msgctxt "#32205"
+msgid "Generation V"
+msgstr ""
+
+msgctxt "#32206"
+msgid "Generation VI"
+msgstr ""
+
+msgctxt "#32207"
+msgid "Generation VII"
+msgstr ""
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+msgctxt "#32300"
+msgid "Board Game Geek"
+msgstr ""
+
+msgctxt "#32301"
+msgid "Enabled"
+msgstr ""
+
+msgctxt "#32302"
+msgid "Use BGG rank(need to build index file) instead of hotness list"
+msgstr ""
+
+msgctxt "#32303"
+msgid "Game mechanic"
+msgstr ""
+
+msgctxt "#32304"
+msgid "Build boardgame index file from boardgamegeek.com"
+msgstr ""
+
+msgctxt "#32305"
+msgid "Success"
+msgstr ""
+
+msgctxt "#32306"
+msgid "File does not exist"
+msgstr ""
+
+msgctxt "#32307"
+msgid "Downloaded page %d of %d"
+msgstr ""
+
+
+msgctxt "#32500"
+msgid "Disabled (0)"
+msgstr ""
+
+msgctxt "#32501"
+msgid "Acting (2073)"
+msgstr ""
+
+msgctxt "#32502"
+msgid "Action / Movement Programming (2689)"
+msgstr ""
+
+msgctxt "#32503"
+msgid "Action Point Allowance System (2001)"
+msgstr ""
+
+msgctxt "#32504"
+msgid "Area Control / Area Influence (2080)"
+msgstr ""
+
+msgctxt "#32505"
+msgid "Area Enclosure (2043)"
+msgstr ""
+
+msgctxt "#32506"
+msgid "Area Movement (2046)"
+msgstr ""
+
+msgctxt "#32507"
+msgid "Area-Impulse (2021)"
+msgstr ""
+
+msgctxt "#32508"
+msgid "Auction/Bidding (2012)"
+msgstr ""
+
+msgctxt "#32509"
+msgid "Betting/Wagering (2014)"
+msgstr ""
+
+msgctxt "#32510"
+msgid "Campaign / Battle Card Driven (2018)"
+msgstr ""
+
+msgctxt "#32511"
+msgid "Card Drafting (2041)"
+msgstr ""
+
+msgctxt "#32512"
+msgid "Chit-Pull System (2057)"
+msgstr ""
+
+msgctxt "#32513"
+msgid "Co-operative Play (2023)"
+msgstr ""
+
+msgctxt "#32514"
+msgid "Commodity Speculation (2013)"
+msgstr ""
+
+msgctxt "#32515"
+msgid "Crayon Rail System (2010)"
+msgstr ""
+
+msgctxt "#32516"
+msgid "Deck / Pool Building (2664)"
+msgstr ""
+
+msgctxt "#32517"
+msgid "Dice Rolling (2072)"
+msgstr ""
+
+msgctxt "#32518"
+msgid "Grid Movement (2676)"
+msgstr ""
+
+msgctxt "#32519"
+msgid "Hand Management (2040)"
+msgstr ""
+
+msgctxt "#32520"
+msgid "Hex-and-Counter (2026)"
+msgstr ""
+
+msgctxt "#32521"
+msgid "Line Drawing (2039)"
+msgstr ""
+
+msgctxt "#32522"
+msgid "Memory (2047)"
+msgstr ""
+
+msgctxt "#32523"
+msgid "Modular Board (2011)"
+msgstr ""
+
+msgctxt "#32524"
+msgid "Paper-and-Pencil (2055)"
+msgstr ""
+
+msgctxt "#32525"
+msgid "Partnerships (2019)"
+msgstr ""
+
+msgctxt "#32526"
+msgid "Pattern Building (2048)"
+msgstr ""
+
+msgctxt "#32527"
+msgid "Pattern Recognition (2060)"
+msgstr ""
+
+msgctxt "#32528"
+msgid "Pick-up and Deliver (2007)"
+msgstr ""
+
+msgctxt "#32529"
+msgid "Player Elimination (2685)"
+msgstr ""
+
+msgctxt "#32530"
+msgid "Point to Point Movement (2078)"
+msgstr ""
+
+msgctxt "#32531"
+msgid "Press Your Luck (2661)"
+msgstr ""
+
+msgctxt "#32532"
+msgid "Rock-Paper-Scissors (2003)"
+msgstr ""
+
+msgctxt "#32533"
+msgid "Role Playing (2028)"
+msgstr ""
+
+msgctxt "#32534"
+msgid "Roll / Spin and Move (2035)"
+msgstr ""
+
+msgctxt "#32535"
+msgid "Route/Network Building (2081)"
+msgstr ""
+
+msgctxt "#32536"
+msgid "Secret Unit Deployment (2016)"
+msgstr ""
+
+msgctxt "#32537"
+msgid "Set Collection (2004)"
+msgstr ""
+
+msgctxt "#32538"
+msgid "Simulation (2070)"
+msgstr ""
+
+msgctxt "#32539"
+msgid "Simultaneous Action Selection (2020)"
+msgstr ""
+
+msgctxt "#32540"
+msgid "Singing (2038)"
+msgstr ""
+
+msgctxt "#32541"
+msgid "Stock Holding (2005)"
+msgstr ""
+
+msgctxt "#32542"
+msgid "Storytelling (2027)"
+msgstr ""
+
+msgctxt "#32543"
+msgid "Take That (2686)"
+msgstr ""
+
+msgctxt "#32544"
+msgid "Tile Placement (2002)"
+msgstr ""
+
+msgctxt "#32545"
+msgid "Time Track (2663)"
+msgstr ""
+
+msgctxt "#32546"
+msgid "Trading (2008)"
+msgstr ""
+
+msgctxt "#32547"
+msgid "Trick-taking (2009)"
+msgstr ""
+
+msgctxt "#32548"
+msgid "Variable Phase Order (2079)"
+msgstr ""
+
+msgctxt "#32549"
+msgid "Variable Player Powers (2015)"
+msgstr ""
+
+msgctxt "#32550"
+msgid "Voting (2017)"
+msgstr ""
+
+msgctxt "#32551"
+msgid "Worker Placement (2082)"
+msgstr ""
+
+
+
+
+
+msgctxt "#32901"
+msgid "Missing index file"
+msgstr ""
+
+msgctxt "#32902"
+msgid "Buind index file in Addon Settings"
+msgstr ""
+
+
+
+
+

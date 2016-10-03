@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<settings>
+    <category label="32100">
+    	<setting id='clear_cache_button'      type="action" label="32101"  default="" action="RunAddon(script.screensaver.whatsit,mode=action&arg1=clear_cache)"/>
+    </category>
+    <!-- category label="32200">
+    	<setting id="gen1"                    type="bool"   label="32201" default="true"/>
+    	<setting id="gen2"                    type="bool"   label="32202" default="false"/>
+    	<setting id="gen3"                    type="bool"   label="32203" default="false"/>
+    	<setting id="gen4"                    type="bool"   label="32204" default="false"/>
+    	<setting id="gen5"                    type="bool"   label="32205" default="false"/>
+    	<setting id="gen6"                    type="bool"   label="32206" default="false"/>
+    	
+    </category-->
+    <category label="32300">
+    	<setting id="use_bgg_rank"            type="bool"   label="32302"  default="false"/>
+    	<setting visible="false" id="game_mechanic"           type="select" label="32303"  lvalues="32500|32501|32502|32503|32504|32505|32506|32507|32508|32509|32510|32511|32512|32513|32514|32515|32516|32517|32518|32519|32520|32521|32522|32523|32524|32525|32526|32527|32528|32529|32530|32531|32532|32533|32534|32535|32536|32537|32538|32539|32540|32541|32542|32543|32544|32545|32546|32547|32548|32549|32550|32551"/>
+    	
+    	
+    	<setting id='bgg_index_button'        type="action" label="32304"  default="" action="RunAddon(script.screensaver.whatsit,mode=build_index_file&arg1=bgg)"/>
+    	
+
+    	
+    </category>
+
+</settings>
