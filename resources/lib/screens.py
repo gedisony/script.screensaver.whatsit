@@ -574,6 +574,7 @@ class bggslide(ScreensaverBase):
     ID_STAT7_LIST=307
     ID_STAT8_LIST=308
     ID_STAT9_LIST=309
+    ID_STAT10_LIST=310
     ID_RANK_TEXT=390
     image_control_ids=[102,103,104,105,106,107,108,109,110]
     MAIN_IMAGE_ID=101
@@ -680,7 +681,7 @@ class bggslide(ScreensaverBase):
         ctl_game_stats.setPosition(0, 0)
         
         ctl_game_stats.setAnimations(  self.fade_in_out_animation( 0, TIME_TITLE_SLIDE_DONE, 5000 ) +
-                                      [self.animation_format(0,  TIME_TITLE_SLIDE_DONE, 'slide', '700,0', '-800,0', 'linear', '' ), ]  )
+                                      [self.animation_format(5000,  TIME_TITLE_SLIDE_DONE, 'slide', '580,0', '-800,0', 'linear', '' ), ]  )
         ctl_game_stats.setVisible(True)
 
         #ctl_game_tdesc.setAnimations( [ self.animation_format(TIME_CLUE_SLIDES_DONE, TIME_PER_SLIDE, 'fade',    0,      100, 'quadratic', '' ), ]  )
@@ -772,6 +773,12 @@ class bggslide(ScreensaverBase):
         list1=self.xbmc_window.getControl(self.ID_STAT9_LIST)
         list1.reset()
         list1.addItems( factlet['designers'] + factlet['artists'])
+        
+        list1=self.xbmc_window.getControl(self.ID_STAT10_LIST)
+        list1.reset()
+        list1.addItems( factlet['families'])
+
+        
 
     def udlr_slide_animations(self, delay, time):
 

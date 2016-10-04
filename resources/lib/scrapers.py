@@ -301,7 +301,7 @@ class boardgamegeek(factsBase):
                                       "image"      :g.image, 
                                       "thumbnail"  :g.thumbnail, 
                                       "description":g.description, 
-                                      #"families"   :g.families,      #not useful 
+                                      "families"   :g.families,      
                                       "categories" :g.categories, 
                                       "mechanics"  :g.mechanics, 
                                       "designers"  :g.designers,

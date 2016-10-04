@@ -209,6 +209,47 @@
 					<font>font16</font>
 				</control>
 
+				<control type="group"><description>first-1 listbox group</description>
+					<height>100</height>
+								<control type="label" id="320">
+									<description>listbox -1 Label</description>
+									<left>10</left>
+									<width>160</width>
+									<height>20</height>
+									<visible>!String.IsEqual(Container(310).NumItems,0)</visible>
+									<label>[B]Families[/B]</label>
+									<align>right</align>
+									<font>font16</font>
+								</control>
+
+								<control type="panel" id="310">
+									<top>8</top>
+									<left>180</left>
+									<width>560</width>
+									<height>100</height>
+									<orientation>horizontal</orientation>
+									<focusedlayout height="25" width="280">
+										<control type="label">
+											<left>10</left>
+											<width>270</width>
+											<height>23</height>
+											<font>font13</font>
+											<label>·$INFO[ListItem.Label]</label>
+										</control>
+									</focusedlayout>
+									<itemlayout height="25" width="280">
+										<control type="label">
+											<left>10</left>
+											<width>270</width>
+											<height>23</height>
+											<font>font13</font>
+											<label>·$INFO[ListItem.Label]</label>
+										</control>
+									</itemlayout>
+								</control>
+				</control>
+
+
 				<control type="group"><description>first listbox group</description>
 					<height>100</height>
 								<control type="label" id="317">

@@ -57,6 +57,15 @@ BGG_INDEX_FILE =xbmc.translatePath( PROFILE_DIR+"/bgg_index.pickle" )
 
 facts_queue=Queue(maxsize=4)
 
+#on a fresh install, the profile path is not yet created. Kodi will do this for our addon (after a user saves a setting)
+#  the user will get an error because we cannot create our cache.sqlite file. 
+#  we create it  
+if not os.path.exists(PROFILE_DIR):
+    os.makedirs(PROFILE_DIR)
+    #resources.lib.requests_cache.install_cache( CACHE_FILE, backend='memory' )  #will create a cache in memory
+    #log('using memory for requests_cache file')
+        
+resources.lib.requests_cache.install_cache(CACHE_FILE, backend='sqlite', expire_after=604800 )  #cache expires after 7 days
 
 
 
@@ -88,12 +97,6 @@ def start(arg1, arg2):
 
     work_q = Queue()
     
-    #of a fresh install system, the profile folder does not exist. 
-    #  force the user to open settings and hope they click on ok so that our profile folder(where we store our cache and indexes) will exist.
-    if not os.path.exists(PROFILE_DIR):
-        xbmc.executebuiltin('XBMC.Notification("%s","%s")' %(  localize(32309),localize(32310)  ) )    
-        addon.openSettings()
-        
 
     try:
         if arg1=='pokemon':
@@ -285,16 +288,6 @@ def localize(id):
 
 def log(message, level=xbmc.LOGNOTICE):
     xbmc.log(ADDON_ID+":"+message, level=level)
-
-
-#on a fresh install, the profile path is not yet created. Kodi will do this for our addon (after a user saves a setting?)
-#  the user will get an error because we cannot create our cache.sqlite file. 
-#  we instead create it in memory 
-if not os.path.exists(PROFILE_DIR):
-    resources.lib.requests_cache.install_cache( CACHE_FILE, backend='memory' )  #will create a cache in memory
-    log('using memory for requests_cache file')
-else:        
-    resources.lib.requests_cache.install_cache(CACHE_FILE, backend='sqlite', expire_after=604800 )  #cache expires after 7 days
 
 if __name__ == '__main__':
     if len(sys.argv) > 1: 
