@@ -1,4 +1,5 @@
-
+0.2.2
+ - fix when not enough images per boardgame
 
 0.2.1
  - use memory for requests_cache if profile folder not exist  

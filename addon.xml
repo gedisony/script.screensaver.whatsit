@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <addon id="script.screensaver.whatsit" 
 	name="What is it Screensaver" 
-	version="0.2.1" 
+	version="0.2.2" 
 	provider-name="gedisony">
     <requires>
         <import addon="xbmc.python" version="2.1.0"/>
@@ -16,7 +16,7 @@
         <language/>
         <website></website>
         <source></source>
-        <forum>http://forum.kodi.tv/showthread.php?tid=287355</forum>
+        <forum>http://forum.kodi.tv/showthread.php?pid=2429434</forum>
         <email>gediso+ny at gmail dot com</email>
         <summary lang="en">Identify that boardgame from its components.</summary>
         <description lang="en">You've collected them all. See if you can recognize them from their components.[CR]Boardgame images and infrmation from https://boardgamegeek.com/</description>  

@@ -675,16 +675,28 @@ class bggslide(ScreensaverBase):
         ctl_game_tdesc=self.xbmc_window.getControl(200)  #the width of this control is 800
         ctl_game_stats=self.xbmc_window.getControl(300)  #the width of this control is 800
         
+
+        ctl_game_stats.setVisible(False)
+        ctl_game_stats.setPosition(0, 0)
         
-        ctl_game_stats.setAnimations( [ self.animation_format(0,  TIME_TITLE_SLIDE_DONE, 'slide', '1280,0', '-800,0', 'linear', '' ), ]  )
+        ctl_game_stats.setAnimations(  self.fade_in_out_animation( 0, TIME_TITLE_SLIDE_DONE, 5000 ) +
+                                      [self.animation_format(0,  TIME_TITLE_SLIDE_DONE, 'slide', '700,0', '-800,0', 'linear', '' ), ]  )
+        ctl_game_stats.setVisible(True)
+
         #ctl_game_tdesc.setAnimations( [ self.animation_format(TIME_CLUE_SLIDES_DONE, TIME_PER_SLIDE, 'fade',    0,      100, 'quadratic', '' ), ]  )
         ctl_game_tdesc.setAnimations( self.random_animations( (TIME_CLUE_SLIDES_DONE), TIME_PER_SLIDE)  )
-        
-        #ctl_game_tdesc.setVisible(True)
+        ctl_game_tdesc.setVisible(True)
 
+        
+        #log( 'no of images:' + repr(len(factlet.get('images'))) )
+        
+        if len(factlet.get('images')) < CLUES_TO_SHOW:
+            CLUES_TO_SHOW=len(factlet.get('images'))
         #pick 5 random images 
         images=random.sample(factlet.get('images'), CLUES_TO_SHOW)
         #log( pprint.pformat(images) )
+        
+        
 
         for i, img in enumerate(images):
             iid=self.image_controls_cycle.next()

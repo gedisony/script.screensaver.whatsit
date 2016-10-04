@@ -125,7 +125,7 @@ class boardgamegeek(factsBase):
             log('  index file loaded: %d items' % len(self.data))
         else:
             #load hotness list
-            self.get_hotness_list(60) 
+            self.get_hotness_list(50) 
             log('  hotness list downloaded: %d items' % len(self.data))
             
     
@@ -245,7 +245,7 @@ class boardgamegeek(factsBase):
         
     def generate_random_slide(self):
         
-        p=random.randint(1, len(self.data) )
+        p=random.randint(0, len(self.data) )
         #p=self.id_generator.next()
         #p=718
         
