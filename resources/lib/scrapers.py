@@ -135,10 +135,9 @@ class boardgamegeek(factsBase):
         log( 'Downloading boardgame list %d-%d' %(start_page, end_page-1) )
         for i in range(start_page,end_page):
             try:
-                page = self.get_game_list(i)
-                xbmc.sleep(1000)
                 progress_function(localize(32307) %(i,end_page-1))
-                xbmc.sleep(1000)
+                page = self.get_game_list(i)
+                xbmc.sleep(2000)
             except requests.exceptions.ReadTimeout:
                 progress_function(localize(32308) ) #Read Timeout, Please Try again.
                 raise
