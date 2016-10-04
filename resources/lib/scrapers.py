@@ -33,7 +33,7 @@ from screensaver import addon, ADDON_PATH, SQLITE_FILE, BGG_INDEX_FILE, PKMON_IN
 from screensaver import log, localize
 import pprint
 
-REQ_TIMEOUT=3  #requests timeout in seconds
+REQ_TIMEOUT=4  #requests timeout in seconds
 
 
 gen1        = addon.getSetting("gen1") == "true"
@@ -134,16 +134,21 @@ class boardgamegeek(factsBase):
         end_page=7
         log( 'Downloading boardgame list %d-%d' %(start_page, end_page-1) )
         for i in range(start_page,end_page):
-            page = self.get_game_list(i)
-            xbmc.sleep(1000)
-            progress_function(localize(32307) %(i,end_page-1))
-            xbmc.sleep(1000)
+            try:
+                page = self.get_game_list(i)
+                xbmc.sleep(1000)
+                progress_function(localize(32307) %(i,end_page-1))
+                xbmc.sleep(1000)
+            except requests.exceptions.ReadTimeout:
+                progress_function(localize(32308) ) #Read Timeout, Please Try again.
+                raise
             
             self.data.extend(page)
         
         #log( pprint.pformat(self.data, indent=1) )
         
         save_dict( self.data, self.data_file )
+        progress_function(localize(32305) )
         log('    created bgg index file(%s) %d items' %(self.data_file, len(self.data) )   )        
 
     def get_hotness_list(self,num_items):
@@ -174,7 +179,7 @@ class boardgamegeek(factsBase):
         #https://boardgamegeek.com/geekitem.php?instanceid=5&objecttype=property&objectid=2023&subtype=boardgamemechanic&pageid=1&sort=rank&view=boardgames&modulename=linkeditems&callback=&showcount=10&filters[categoryfilter]=&filters[mechanicfilter]=&action=linkeditems&ajax=1
         #https://boardgamegeek.com/geekitem.php?instanceid=5&objecttype=property&objectid=1009&subtype=boardgamecategory&pageid=1&sort=rank&view=boardgames&modulename=linkeditems&callback=&showcount=10&filters[categoryfilter]=&filters[mechanicfilter]=&action=linkeditems&ajax=1        
         
-        page = requests.get('https://boardgamegeek.com/browse/boardgame/page/%s' %page_no, timeout=REQ_TIMEOUT )
+        page = requests.get('http://boardgamegeek.com/browse/boardgame/page/%s' %page_no, timeout=REQ_TIMEOUT )
         log( '  page %d cached:%s ' %(page_no, repr(page.from_cache )) )
         #log(  repr( page.text ) )
         game_id=''
@@ -597,3 +602,4 @@ def load_dict( pickle_filename ):
 
 if __name__ == '__main__':
     pass
+

@@ -1,6 +1,7 @@
 
 
-0.0.2 
+0.2.1
+ - use memory for requests_cache if profile folder not exist  
 
 
 0.0.1 

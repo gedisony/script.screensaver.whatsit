@@ -114,7 +114,19 @@ msgid "File does not exist"
 msgstr ""
 
 msgctxt "#32307"
-msgid "Downloaded page %d of %d"
+msgid "Download page %d of %d"
+msgstr ""
+
+msgctxt "#32308"
+msgid "Read Timeout, Please Try again."
+msgstr ""
+
+msgctxt "#32309"
+msgid "Initialize profile folder"
+msgstr ""
+
+msgctxt "#32310"
+msgid "Please click 'OK' to initialize the settings folder"
 msgstr ""
 
 

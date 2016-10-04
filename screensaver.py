@@ -72,14 +72,12 @@ def start(arg1, arg2):
 
     work_q = Queue()
     
+    #of a fresh install system, the profile folder does not exist. 
+    #  force the user to open settings and hope they click on ok so that our profile folder(where we store our cache and indexes) will exist.
     if not os.path.exists(PROFILE_DIR):
-        #on a fresh install, the profile path is not yet created. Kodi will do this for our addon (after a user saves a setting?)
-        #  the user will get an error because we cannot create our cache.sqlite file. 
-        #  we instead create it in memory 
-        resources.lib.requests_cache.install_cache( CACHE_FILE, backend='memory' )  #will create a cache in memory
-        log('using memory for requests_cache file')
-    else:        
-        resources.lib.requests_cache.install_cache(CACHE_FILE, backend='sqlite', expire_after=604800 )  #cache expires after 7 days
+        xbmc.executebuiltin('XBMC.Notification("%s","%s")' %(  localize(32309),localize(32310)  ) )    
+        addon.openSettings()
+        
 
     try:
         if arg1=='pokemon':
@@ -167,10 +165,10 @@ def build_index_file(arg1, arg2):
             #bgg.get_game_list(1)
             
     except Exception as e:
-        set_build_index_file_result(str(e))
+        #set_build_index_file_result(str(e))
         raise
     finally:
-        set_build_index_file_result(localize(32305))
+        #set_build_index_file_result(localize(32305)) #success
         pass
     
     return
@@ -218,7 +216,7 @@ class Worker(threading.Thread):
                 if self.q_out.full():
                     self.watchdog-=1
                     self.wait(3000)
-                    log('      #watchdog: %.2d output_queuesize(%.2d)' %(self.watchdog, self.q_out.qsize() ) )
+                    #log('      #watchdog: %.2d output_queuesize(%.2d)' %(self.watchdog, self.q_out.qsize() ) )
                 else:
                     self.do_work()
                     self.watchdog=40
@@ -271,6 +269,16 @@ def localize(id):
 
 def log(message, level=xbmc.LOGNOTICE):
     xbmc.log(ADDON_ID+":"+message, level=level)
+
+
+#on a fresh install, the profile path is not yet created. Kodi will do this for our addon (after a user saves a setting?)
+#  the user will get an error because we cannot create our cache.sqlite file. 
+#  we instead create it in memory 
+if not os.path.exists(PROFILE_DIR):
+    resources.lib.requests_cache.install_cache( CACHE_FILE, backend='memory' )  #will create a cache in memory
+    log('using memory for requests_cache file')
+else:        
+    resources.lib.requests_cache.install_cache(CACHE_FILE, backend='sqlite', expire_after=604800 )  #cache expires after 7 days
 
 if __name__ == '__main__':
     if len(sys.argv) > 1: 
