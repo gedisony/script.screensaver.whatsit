@@ -30,6 +30,10 @@ from screensaver import log
 
 import pprint
 
+import PIL
+import requests
+
+
 reload(sys)
 sys.setdefaultencoding("utf-8")
 
@@ -166,7 +170,12 @@ class ScreensaverBase(object):
         #pops the first one
         #self.log('get queue item')
         #factlet=self.facts_queue.get(block=True,timeout=5000)
+
+
+        log('   initial start: queue %d' %(self.facts_queue.qsize())  )
+        
         factlet=self.facts_queue.get()
+            
         
         #self.log('  image_url_cycle.next %s' % image_url)
         
@@ -623,12 +632,17 @@ class bggslide(ScreensaverBase):
                     #self.log( '  worker is alive:' + repr(self.worker_thread.isAlive()) )
                     self.log( '  using:' + pprint.pformat(factlet, indent=1, depth=1) )
                     
-
-                    #pops an image control
-                    image_control = self.image_controls_cycle.next()
+                    factlet_type=factlet.get('factlet_type')
                     
-                    self.process_image(image_control, factlet)
-                    
+                    if factlet_type =='boardgamegeek':
+                        image_control = self.image_controls_cycle.next()
+                        self.process_image(image_control, factlet)
+                    elif factlet_type =='googlemusicthumbs':
+                        #log('  music thumbs:' + pprint.pformat(factlet.get('images') ) )
+                        #self.process_music_slide(factlet)
+                        pass
+                        
+                        
                     self.wait()  #waits for self.NEXT_IMAGE_TIME
 
             #if self.watchdog>=20:
@@ -716,12 +730,26 @@ class bggslide(ScreensaverBase):
             img_ctl.setVisible(True)
             
 
+
+
+        #from cStringIO import StringIO
+        #imagefile = StringIO()  # writable object
+        
+        # save to open filehandle, so specifying the expected format is required
+        #pil_img.save(imagefile, format='JPEG')
+        #imagedata = imagefile.getvalue()
+
+
+
+
         #image=factlet.get('image')
         image_control=self.xbmc_window.getControl(self.MAIN_IMAGE_ID)
         
         image_control.setVisible(False)
         image_control.setImage('')
+        
         image_control.setImage(factlet.get('image'))
+        
         image_control.setPosition(0, 0)  
         image_control.setWidth(ctl_width)   
         image_control.setHeight(ctl_height)
@@ -777,8 +805,6 @@ class bggslide(ScreensaverBase):
         list1=self.xbmc_window.getControl(self.ID_STAT10_LIST)
         list1.reset()
         list1.addItems( factlet['families'])
-
-        
 
     def udlr_slide_animations(self, delay, time):
 
@@ -955,6 +981,16 @@ class bggslide(ScreensaverBase):
         
         return a[0]
 
+
+
+def from_PIL( image_url ):
+    from PIL import Image
+    from StringIO import StringIO
+    r = requests.get( factlet.get('image') )
+    pil_img=Image.open(StringIO(r.content))
+    log('***cahced:'+ repr(r.from_cache) +'***' + repr(pil_img) )
+        
+        
 class HorizontalSlideScreensaver2(ScreensaverBase):
     BACKGROUND_IMAGE = 'srr_blackbg.jpg'
     IMAGE_CONTROL_COUNT = 35

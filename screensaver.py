@@ -97,7 +97,7 @@ def start(arg1, arg2):
 
     work_q = Queue()
     
-
+    #arg1='pokemon'
     try:
         if arg1=='pokemon':
             bg=bulbgarden()
@@ -213,6 +213,7 @@ class ExitMonitor(xbmc.Monitor):
         self.exit_callback()
 
 class Worker(threading.Thread):
+    last_playing_song=''
     def __init__(self, q_in, q_out, slide_info_generator):
         threading.Thread.__init__(self)
         self.q_out = q_out
@@ -231,7 +232,10 @@ class Worker(threading.Thread):
     def run(self):
         self.running = True
         while self.running:
+            #log('    #worker thread ping')
             try:
+                 
+                
                 if self.q_out.full():
                     self.watchdog-=1
                     self.wait(3000)
@@ -241,7 +245,7 @@ class Worker(threading.Thread):
                     self.watchdog=40
                     #log('    #job processed %d %d' %(self.q_out.qsize(),self.watchdog ) )
                     self.wait(8000)
-                 
+                
             except Empty:  #input queue is enpty. 
                 # Allow other stuff to run
                 self.wait(1000)

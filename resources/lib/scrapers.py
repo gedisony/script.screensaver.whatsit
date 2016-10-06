@@ -84,7 +84,8 @@ def make_poke_range_list():
     if gen6:
         ids.extend(range(650,721))
     
-    #ids=[];ids.extend(range(1,8))
+    if len(ids)==0:
+        ids.extend(range(1,151))
     
     return ids        
 
@@ -411,7 +412,7 @@ class bulbgarden(factsBase):
     def load_data(self):
         self.data = load_dict( self.data_file )
         self.data.insert(0,None)  #move the first entry so that our index corresponds to the pokemon id. 
-        #log('    vvvsss' + repr(self.data[7]))
+        log('    pokemon data loaded ' + repr(len( self.data ) ))
 
     def get_bulbapedia_entry(self, pokemon_id):
         counter=0
@@ -585,8 +586,10 @@ class bulbgarden(factsBase):
     def generate_random_slide(self):
         #p=random.randint(1, 151)
         p=self.id_generator.next()
+        log( '  generate.next:' + self.data[p].get('name') )
         #p=718
         return self.get_bulbapedia_entry(p)
+
     
 def save_dict( dict_to_save, pickle_filename ):
     with open(pickle_filename, 'wb') as output:
